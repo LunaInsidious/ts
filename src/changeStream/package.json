@@ -1,0 +1,12 @@
+{
+  "name": "mongo-change-stream-sample",
+  "version": "1.0.0",
+  "description": "Node.jsでmongoose(8系)のChange Streamを利用するサンプル",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "mongoose": "^8.0.0"
+  }
+}

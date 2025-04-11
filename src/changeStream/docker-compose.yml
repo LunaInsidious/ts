@@ -1,0 +1,55 @@
+services:
+  # mongo:
+  #   image: mongo
+  #   container_name: mongo
+  #   ports:
+  #     - "27017:27017"
+  #   command: ["mongod", "--replSet", "rs0", "--bind_ip_all"]
+
+  # 認証付きmongo
+  mongo:
+    image: mongo
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+    volumes:
+      - ./mnt/db/db:/data/db
+      - ./mnt/db/configdb:/data/configdb
+      - ./mongo-keyfile:/etc/keyfile:ro
+    command: mongod --replSet rs0 --keyFile /etc/keyfile --bind_ip_all --auth
+
+  # # keyfileをマウントすると初期起動時のルートユーザー作成が行われず、ログインが出来ない。
+  # # そのため、別途
+  # mongo-init:
+  #   image: mongo
+  #   ports:
+  #     - "27018:27017"
+  #   environment:
+  #     MONGO_INITDB_ROOT_USERNAME: root
+  #     MONGO_INITDB_ROOT_PASSWORD: example
+  #   volumes:
+  #     - ./mnt/db/db:/data/db
+  #     - ./mnt/db/configdb:/data/configdb
+
+  mongo-express:
+    image: mongo-express
+    ports:
+      - "8081:8081"
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: root
+      ME_CONFIG_MONGODB_ADMINPASSWORD: example
+      ME_CONFIG_MONGODB_SERVER: mongo
+    depends_on:
+      - mongo
+
+  node:
+    build: .
+    container_name: node-app
+    depends_on:
+      - mongo
+    environment:
+      - NODE_ENV=development
+    ports:
+      - "3000:3000"

@@ -1,5 +1,5 @@
-const https = require("https");
-const fs = require("fs");
+const https = require("node:https");
+const fs = require("node:fs");
 
 const options = {
   cert: fs.readFileSync(`${__dirname}/akidokoro.jp.pem`),
