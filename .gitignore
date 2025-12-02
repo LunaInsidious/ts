@@ -1,0 +1,8 @@
+node_modules/
+dist/
+mnt/
+
+mongo-keyfile
+
+*.pem
+**/data/**

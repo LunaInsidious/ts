@@ -1,0 +1,41 @@
+{
+  "formatter": {
+    "enabled": true,
+    "indentStyle": "space",
+    "indentWidth": 2
+  },
+  "assist": { "actions": { "source": { "organizeImports": "on" } } },
+  "files": {
+    "includes": [
+      "**",
+      "!**/*.js",
+      "!**/*.d.ts",
+      "!**/coverage/**",
+      "!**/mnt/**"
+    ]
+  },
+  "linter": {
+    "enabled": true,
+    "rules": {
+      "recommended": true,
+      "performance": {},
+      "correctness": {
+        "noUnusedImports": "error",
+        "noUnusedVariables": "error"
+      },
+      "complexity": {
+        "recommended": true,
+        "useLiteralKeys": "off"
+      },
+      "a11y": {
+        "recommended": true
+      },
+      "suspicious": {
+        "noThenProperty": "off"
+      },
+      "style": {
+        "noNamespace": "error"
+      }
+    }
+  }
+}
