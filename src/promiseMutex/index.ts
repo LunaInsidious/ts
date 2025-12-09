@@ -1,5 +1,5 @@
 import { Semaphore } from "async-mutex";
-import { delay } from "../util/delay";
+import { delay } from "../util/delay.js";
 
 const semaphore = new Semaphore(10);
 

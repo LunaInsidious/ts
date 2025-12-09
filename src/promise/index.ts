@@ -1,4 +1,4 @@
-import { delay } from "../util/delay";
+import { delay } from "../util/delay.js";
 
 const promise = async () => {
   await delay(1000);

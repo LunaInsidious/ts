@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import { useMongo } from "../util/mongo";
+import { useMongo } from "../util/mongo.js";
 import { Readable, pipeline } from "node:stream";
 
 // DIした結果
