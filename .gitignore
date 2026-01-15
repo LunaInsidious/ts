@@ -6,3 +6,5 @@ mongo-keyfile
 
 *.pem
 **/data/**
+
+tsconfig.tsbuildinfo
