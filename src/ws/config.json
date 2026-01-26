@@ -1,0 +1,13 @@
+{
+  "services": {
+    "hoge": {
+      "host": "hoge-service.local",
+      "cluster": "hoge-cluster",
+      "service": "hoge-service"
+    }
+  },
+  "s3": {
+    "bucket": "my-heap-snapshots",
+    "path": "snapshots/"
+  }
+}
