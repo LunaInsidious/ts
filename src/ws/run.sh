@@ -7,9 +7,11 @@ target="${1:-localhost}"
 read -r host cluster service < <(
   jq -r --arg target "$target" '
     .services[$target]
-    | select(. != null)
-    | [.host, .cluster, .service]
-    | @tsv
+    | if . == null then
+        error("unknown target: \($target)")
+      else
+        [.host, .cluster, .service] | @tsv
+      end
   ' ./config.json
 )
 
