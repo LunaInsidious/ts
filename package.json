@@ -36,6 +36,7 @@
     "mongodb": "^6.10.0",
     "mongoose": "^8.8.2",
     "node-cache": "^5.1.2",
+    "stream-head": "^3.0.0",
     "ws": "8.19.0"
   }
 }
