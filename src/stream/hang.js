@@ -1,5 +1,5 @@
 // repro-finished-hang.js
-import { PassThrough, Readable } from "node:stream";
+import { PassThrough, Readable, Writable } from "node:stream";
 import { finished } from "node:stream/promises";
 import streamHead from "stream-head";
 
@@ -100,6 +100,11 @@ const streamHeadTest = async () => {
     destroyed: hangStream.destroyed,
     autoDestroy: hangStream._readableState.autoDestroy,
     emitClose: hangStream._writableState.emitClose,
+    isReadable: hangStream instanceof Readable,
+    isWritable: hangStream instanceof Writable,
+    isPassThrough: hangStream instanceof PassThrough,
+    isReadableStream: "_readableState" in hangStream,
+    isWritableStream: "_writableState" in hangStream,
   });
 
   try {
