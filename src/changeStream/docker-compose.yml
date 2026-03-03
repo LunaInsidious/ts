@@ -15,7 +15,6 @@ services:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: example
     volumes:
-      - ./mnt/db/db:/data/db
       - ./mnt/db/configdb:/data/configdb
       - ./mongo-keyfile:/etc/keyfile:ro
     command: mongod --replSet rs0 --keyFile /etc/keyfile --bind_ip_all --auth
